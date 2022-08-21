@@ -6,6 +6,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.10.1",
     "date-fns": "^2.29.2",
     "gray-matter": "^4.0.3",
     "next": "latest",

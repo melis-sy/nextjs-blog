@@ -13,12 +13,17 @@ body {
 }
 
 a {
-  color: #0070f3;
+    color: #020202;
+    text-decoration: none;
+  }
+
+Button>a {
+  color: #f8f8f8;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 img {
