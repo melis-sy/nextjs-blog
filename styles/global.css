@@ -13,7 +13,7 @@ body {
 }
 
 a {
-    color: #020202;
+    color: #05724e;
     text-decoration: none;
   }
 
@@ -22,8 +22,13 @@ Button>a {
   text-decoration: none;
 }
 
+Button>a:hover {
+    font-weight: 500;
+}
+
 a:hover {
   text-decoration: none;
+  font-weight: bold;
 }
 
 img {
