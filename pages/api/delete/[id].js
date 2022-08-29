@@ -1,9 +1,10 @@
-import axios from "axios";
+import { deletePost } from "../../../lib/delete";
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
+  console.log(req);
   try {
-    const result = await someAsyncOperation();
-    res.status(200).send({ result });
+    deletePost(req.query.id);
+    res.status(200).send({});
   } catch (err) {
     res.status(500).send({ error: "failed to fetch data" });
   }

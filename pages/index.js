@@ -21,7 +21,7 @@ const theme = createTheme({ palette: { primary: { main: "#476500" } } });
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
-  const postData = await getPostData(1);
+  const postData = await getPostData(allPostsData[0].id);
 
   return {
     props: {
