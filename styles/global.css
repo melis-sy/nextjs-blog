@@ -12,23 +12,15 @@ body {
   box-sizing: border-box;
 }
 
-a {
-    color: #05724e;
-    text-decoration: none;
-  }
 
-Button>a {
+a {
   color: #f8f8f8;
   text-decoration: none;
 }
 
-Button>a:hover {
-    font-weight: 500;
-}
 
 a:hover {
   text-decoration: none;
-  font-weight: bold;
 }
 
 img {
