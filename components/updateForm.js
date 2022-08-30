@@ -5,75 +5,28 @@ import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-function CreateForm() {
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [linkText, setLinkText] = React.useState("");
-  const [content, setContent] = React.useState("");
-  let error = false;
-  let button = (
-    <Button
-      sx={{ my: { xs: 4, md: 4 } }}
-      variant="outlined"
-      endIcon={<SendIcon />}
-      onClick={() => handleSubmit()}
-    >
-      Erstellen
-    </Button>
-  );
+function UpdateForm(props) {
+  const { post } = props;
+
+  const [title, setTitle] = React.useState(post.title);
+  const [description, setDescription] = React.useState(post.description);
+  const [linkText, setLinkText] = React.useState(post.link);
+  const [content, setContent] = React.useState(post.content);
 
   const router = useRouter();
 
   async function handleSubmit(event) {
-    await axios.post("/api/create", { title, description, linkText, content });
+    await axios.put(`/api/update/${post.id}`, {
+      title,
+      description,
+      linkText,
+      content,
+    });
     router.push("/");
   }
-
-  function validateValues() {
-    if (
-      (title === "") ^
-      (description === "") ^
-      (linkText === "") ^
-      (content === "")
-    ) {
-      error = true;
-      changeButton();
-    } else {
-      error = false;
-      changeButton();
-    }
-  }
-
-  function changeButton() {
-    if ((error = false)) {
-      button = (
-        <Button
-          sx={{ my: { xs: 4, md: 4 } }}
-          variant="outlined"
-          endIcon={<SendIcon />}
-          onClick={() => handleSubmit()}
-        >
-          Erstellen
-        </Button>
-      );
-    } else {
-      button = (
-        <Button
-          sx={{ my: { xs: 4, md: 4 } }}
-          variant="outlined"
-          endIcon={<SendIcon />}
-          disabled
-        >
-          Erstellen
-        </Button>
-      );
-    }
-  }
-
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>
       <form
-        onChange={validateValues}
         onSubmit={handleSubmit}
         className={utilStyles.paddingNormal}
         style={{ width: "100%" }}
@@ -130,11 +83,19 @@ function CreateForm() {
             minRows={5}
             maxRows={7}
           />
-          {button}
+
+          <Button
+            sx={{ my: { xs: 4, md: 4 } }}
+            variant="outlined"
+            endIcon={<SendIcon />}
+            onClick={() => handleSubmit()}
+          >
+            Erstellen
+          </Button>
         </Grid>
       </form>
     </Grid>
   );
 }
 
-export default CreateForm;
+export default UpdateForm;

@@ -17,12 +17,16 @@ function Buttongroup(props) {
     router.push("/posts/createNewPost");
   }
 
+  function bringToUpdate() {
+    router.push(`/posts/updatePost/${id}`);
+  }
+
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Button variant="contained" color="success" onClick={bringToCreate}>
         CREATE
       </Button>
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="secondary" onClick={bringToUpdate}>
         UPDATE
       </Button>
       <Button variant="contained" color="error" onClick={deletePost}>
