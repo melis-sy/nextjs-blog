@@ -3,6 +3,7 @@ import { TextField, Grid, Button } from "@mui/material";
 import utilStyles from "../styles/utils.module.css";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function CreateForm() {
   const [title, setTitle] = React.useState("");
@@ -10,10 +11,11 @@ function CreateForm() {
   const [linkText, setLinkText] = React.useState("");
   const [content, setContent] = React.useState("");
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const router = useRouter();
 
-    await axios.post("/api/create", { title });
+  async function handleSubmit(event) {
+    await axios.post("/api/create", { title, description, linkText, content });
+    router.push("/");
   }
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>
@@ -39,6 +41,8 @@ function CreateForm() {
             required
             id="description"
             name="description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
             label="Kurzbeschreibung"
             maxRows={3}
             fullWidth
@@ -51,6 +55,8 @@ function CreateForm() {
             required
             id="linkText"
             name="linkText"
+            value={linkText}
+            onChange={(event) => setLinkText(event.target.value)}
             label="Linktext"
             fullWidth
             variant="standard"
@@ -61,6 +67,8 @@ function CreateForm() {
             required
             id="content"
             name="content"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
             label="Post-Inhalt"
             fullWidth
             variant="standard"
@@ -73,6 +81,7 @@ function CreateForm() {
             sx={{ my: { xs: 4, md: 4 } }}
             variant="outlined"
             endIcon={<SendIcon />}
+            onClick={() => handleSubmit()}
           >
             Send
           </Button>

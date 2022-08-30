@@ -12,9 +12,14 @@ function Buttongroup(props) {
     await axios.delete(`/api/delete/${id}`);
     router.push("/");
   }
+
+  function bringToCreate() {
+    router.push("/posts/createNewPost");
+  }
+
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
-      <Button variant="contained" color="success">
+      <Button variant="contained" color="success" onClick={bringToCreate}>
         CREATE
       </Button>
       <Button variant="contained" color="secondary">
