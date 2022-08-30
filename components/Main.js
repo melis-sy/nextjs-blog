@@ -24,11 +24,14 @@ function Main(props) {
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <div key={post.id}>
-          <h1>{post.title}</h1>
-          <Date dateString={post.date} />
-          <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-        </div>
+        <>
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <Date dateString={post.date} />
+            <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+          </div>
+          <Divider />
+        </>
       ))}
     </Grid>
   );
