@@ -10,17 +10,7 @@ function CreateForm() {
   const [description, setDescription] = React.useState("");
   const [linkText, setLinkText] = React.useState("");
   const [content, setContent] = React.useState("");
-  let error = false;
-  let button = (
-    <Button
-      sx={{ my: { xs: 4, md: 4 } }}
-      variant="outlined"
-      endIcon={<SendIcon />}
-      onClick={() => handleSubmit()}
-    >
-      Erstellen
-    </Button>
-  );
+  const [error, setError] = React.useState(true);
 
   const router = useRouter();
 
@@ -31,42 +21,14 @@ function CreateForm() {
 
   function validateValues() {
     if (
-      (title === "") ^
-      (description === "") ^
-      (linkText === "") ^
-      (content === "")
+      title === "" ||
+      description === "" ||
+      linkText === "" ||
+      content === ""
     ) {
-      error = true;
-      changeButton();
+      setError(true);
     } else {
-      error = false;
-      changeButton();
-    }
-  }
-
-  function changeButton() {
-    if ((error = false)) {
-      button = (
-        <Button
-          sx={{ my: { xs: 4, md: 4 } }}
-          variant="outlined"
-          endIcon={<SendIcon />}
-          onClick={() => handleSubmit()}
-        >
-          Erstellen
-        </Button>
-      );
-    } else {
-      button = (
-        <Button
-          sx={{ my: { xs: 4, md: 4 } }}
-          variant="outlined"
-          endIcon={<SendIcon />}
-          disabled
-        >
-          Erstellen
-        </Button>
-      );
+      setError(false);
     }
   }
 
@@ -130,7 +92,15 @@ function CreateForm() {
             minRows={5}
             maxRows={7}
           />
-          {button}
+          <Button
+            sx={{ my: { xs: 4, md: 4 } }}
+            variant="outlined"
+            endIcon={<SendIcon />}
+            onClick={() => handleSubmit()}
+            disabled={error}
+          >
+            Erstellen
+          </Button>
         </Grid>
       </form>
     </Grid>
