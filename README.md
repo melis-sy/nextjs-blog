@@ -2,6 +2,11 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 #Aufgaben
 
+##Allgemein
+
+- Nicht immer alles wegschmeißen
+- Kein Duplicate-Content - wenn möglich
+
 ##Home
 
 - Validierung --> wenn kein Post vorhanden ist soll nur ein Button "Create" angezeigt werden
@@ -16,3 +21,4 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 - Inhalte in das Formular einbauen
 - Auf Änderung der ID prüfen
 - Updaten oder überschreiben --> wenn Titel verändert, dann Altes löschen und Neues anlegen
+- Zur Post-Detailseite weiterleiten
