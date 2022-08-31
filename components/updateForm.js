@@ -6,23 +6,23 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 function UpdateForm(props) {
-  const { post } = props;
+  const { post } = props.post;
 
-  const [title, setTitle] = React.useState(post.title);
-  const [description, setDescription] = React.useState(post.description);
-  const [linkText, setLinkText] = React.useState(post.link);
-  const [content, setContent] = React.useState(post.content);
+  const [title, setTitle] = React.useState(props.post.title);
+  const [description, setDescription] = React.useState(props.post.description);
+  const [linkText, setLinkText] = React.useState(props.post.link);
+  const [content, setContent] = React.useState(props.post.markdownContent);
 
   const router = useRouter();
 
-  async function handleSubmit(event) {
-    await axios.put(`/api/update/${post.id}`, {
+  async function handleSubmit() {
+    await axios.put(`/api/update/${props.post.title}`, {
       title,
       description,
       linkText,
       content,
     });
-    router.push("/");
+    router.push(`/posts/${title}.md`);
   }
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>

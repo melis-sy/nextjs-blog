@@ -1,6 +1,10 @@
-import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import Layout from "../../../components/layout";
+import { getAllPostIds, getPostData } from "../../../lib/posts";
+import { Grid } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
 import UpdateForm from "../../../components/updateForm";
 
 const theme = createTheme({});
@@ -14,7 +18,7 @@ export default function UpdateWrapper({ postData }) {
             variant="outlined"
             sx={{ my: { xs: 4, md: 4 }, p: { xs: 4, md: 4 } }}
           >
-            <UpdateForm id={postData.id}></UpdateForm>
+            <UpdateForm post={postData}></UpdateForm>
           </Paper>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}></Grid>

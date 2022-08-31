@@ -2,9 +2,7 @@ import * as React from "react";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 
-function Createbutton(props) {
-  const { id } = props;
-
+function Createbutton() {
   const router = useRouter();
 
   function bringToCreate() {

@@ -66,7 +66,7 @@ export default function Home({ allPostsData, postData }) {
         <MainFeaturedPost post={postData} />
         <Grid container spacing={4}>
           {allPostsData.map((post) => (
-            <Grid key={post.title} item xs={12} md={6}>
+            <Grid key={post.id} item xs={12} md={6}>
               <FeaturedPost post={post} />
             </Grid>
           ))}
@@ -80,18 +80,6 @@ export default function Home({ allPostsData, postData }) {
             social={sidebar.social}
           />
         </Grid>
-
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}></small>
-            </li>
-          ))}
-        </ul>
       </Container>
     </ThemeProvider>
   );
