@@ -11,7 +11,9 @@ function UpdateForm(props) {
   const [title, setTitle] = React.useState(post.title);
   const [description, setDescription] = React.useState(post.description);
   const [linkText, setLinkText] = React.useState(post.link);
-  const [content, setContent] = React.useState(post.markdownContent);
+  const [content, setContent] = React.useState(
+    post.markdownContent.trimStart()
+  ); //trimStart verhindert hier, dass dem eigentlichen Inhalt Leerraum vorausgeht
   const [error, setError] = React.useState(false);
 
   const router = useRouter();
@@ -92,7 +94,7 @@ function UpdateForm(props) {
             variant="standard"
             multiline
             minRows={5}
-            maxRows={7}
+            maxRows={5}
           />
 
           <Button
