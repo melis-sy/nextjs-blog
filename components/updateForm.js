@@ -6,17 +6,18 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 function UpdateForm(props) {
-  const { post } = props.post;
+  const post = props.post;
 
-  const [title, setTitle] = React.useState(props.post.title);
-  const [description, setDescription] = React.useState(props.post.description);
-  const [linkText, setLinkText] = React.useState(props.post.link);
-  const [content, setContent] = React.useState(props.post.markdownContent);
+  const [title, setTitle] = React.useState(post.title);
+  const [description, setDescription] = React.useState(post.description);
+  const [linkText, setLinkText] = React.useState(post.link);
+  const [content, setContent] = React.useState(post.markdownContent);
+  const [error, setError] = React.useState(false);
 
   const router = useRouter();
 
   async function handleSubmit() {
-    await axios.put(`/api/update/${props.post.title}`, {
+    await axios.put(`/api/update/${post.title}`, {
       title,
       description,
       linkText,
@@ -24,9 +25,19 @@ function UpdateForm(props) {
     });
     router.push(`/posts/${title}`);
   }
+
+  function validateValues() {
+    if (title && description && linkText && content) {
+      setError(false);
+    } else {
+      setError(true);
+    }
+  }
+
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>
       <form
+        onChange={validateValues}
         onSubmit={handleSubmit}
         className={utilStyles.paddingNormal}
         style={{ width: "100%" }}
@@ -89,6 +100,7 @@ function UpdateForm(props) {
             variant="outlined"
             endIcon={<SendIcon />}
             onClick={() => handleSubmit()}
+            disabled={error}
           >
             Erstellen
           </Button>
