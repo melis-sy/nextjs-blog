@@ -22,7 +22,7 @@ function UpdateForm(props) {
       linkText,
       content,
     });
-    router.push(`/posts/${title}.md`);
+    router.push(`/posts/${title}`);
   }
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>

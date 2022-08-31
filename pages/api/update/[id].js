@@ -1,3 +1,5 @@
+import { updatePost } from "../../../lib/update";
+
 export default function handler(req, res) {
   console.log(req);
   try {
