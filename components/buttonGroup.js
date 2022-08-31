@@ -2,6 +2,7 @@ import * as React from "react";
 import { ButtonGroup, Button, Link } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Createbutton from "./createButton";
 
 function Buttongroup(props) {
   const { id } = props;
@@ -13,19 +14,13 @@ function Buttongroup(props) {
     router.push("/");
   }
 
-  function bringToCreate() {
-    router.push("/posts/createNewPost");
-  }
-
   function bringToUpdate() {
     router.push(`/posts/updatePost/${id}`);
   }
 
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
-      <Button variant="contained" color="success" onClick={bringToCreate}>
-        CREATE
-      </Button>
+      <Createbutton></Createbutton>
       <Button variant="contained" color="secondary" onClick={bringToUpdate}>
         UPDATE
       </Button>
