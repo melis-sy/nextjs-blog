@@ -5,6 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import CreateForm from "../../components/createForm";
 import Layout from "../../components/layout";
+import ToggleForm from "../../components/toggleForm";
 
 const theme = createTheme({});
 export default function CreateWrapper({ postData }) {
@@ -17,7 +18,7 @@ export default function CreateWrapper({ postData }) {
             variant="outlined"
             sx={{ my: { xs: 4, md: 4 }, p: { xs: 4, md: 4 } }}
           >
-            <CreateForm></CreateForm>
+            <ToggleForm isUpdate={false}></ToggleForm>
           </Paper>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}></Grid>
