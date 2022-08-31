@@ -17,7 +17,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Sidebar from "../components/Sidebar";
 
-const theme = createTheme({ palette: { primary: { main: "#476500" } } });
+const theme = createTheme({ palette: { primary: { main: "#FF4040" } } });
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
