@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Date from "./date";
+import { v4 as uuidv4 } from "uuid";
 
 function Main(props) {
   const { posts, title } = props;
@@ -24,14 +25,13 @@ function Main(props) {
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <>
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <Date dateString={post.date} />
-            <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-          </div>
+        <div key={uuidv4()}>
+          <h1>{post.title}</h1>
+          <Date dateString={post.date} />
+          <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+
           <Divider />
-        </>
+        </div>
       ))}
     </Grid>
   );

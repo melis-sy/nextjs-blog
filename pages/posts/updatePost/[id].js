@@ -19,7 +19,7 @@ export default function UpdateWrapper({ postData }) {
             variant="outlined"
             sx={{ my: { xs: 4, md: 4 }, p: { xs: 4, md: 4 } }}
           >
-            <ToggleForm post={postData} isUpdate={true}></ToggleForm>
+            <ToggleForm post={postData}></ToggleForm>
           </Paper>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}></Grid>

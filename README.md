@@ -22,3 +22,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 - Auf Änderung der ID prüfen
 - Updaten oder überschreiben --> wenn Titel verändert, dann Altes löschen und Neues anlegen
 - Zur Post-Detailseite weiterleiten
+
+Dialogfenster bei Löschen
+Nicht richtig löschen --> softdeleted
+wiederherstellbar --> Übersichtsseite mit softdeleted posts --> bei Klick auf Button wieder herstellen

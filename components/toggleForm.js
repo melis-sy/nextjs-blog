@@ -5,10 +5,11 @@ import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-function ToggleForm(props) {
-  const post = props.post;
-  const isUpdate = props.isUpdate;
+function ToggleForm({ post }) {
   console.log("Aktuelle Postdaten: ", post);
+
+  const isUpdate = !!post;
+
   console.log("Is Update: ", isUpdate);
 
   //React.useState(post.title || "")
@@ -22,26 +23,6 @@ function ToggleForm(props) {
     isUpdate ? post.markdownContent.trimStart() : ""
   );
   const [error, setError] = React.useState(isUpdate ? false : true);
-
-  /*React.useEffect(() => {
-    if (isUpdate) {
-      () => {
-        setTitle(post.title);
-        setDescription(post.description);
-        setLinkText(post.link);
-        setContent(post.markdownContent.trimStart()); //trimStart verhindert hier, dass dem eigentlichen Inhalt Leerraum vorausgeht
-        setError(false);
-      };
-      console.log("Values are set");
-      console.log(
-        post.title,
-        post.description,
-        post.linkText,
-        post.content,
-        post.error
-      );
-    }
-  });*/
 
   const router = useRouter();
 
@@ -65,18 +46,11 @@ function ToggleForm(props) {
     }
   }
 
-  function validateValues() {
-    if (
-      title === "" ||
-      description === "" ||
-      linkText === "" ||
-      content === ""
-    ) {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  }
+  const validateValues = () =>
+    title === "" || description === "" || linkText === "" || content === ""
+      ? setError(true)
+      : setError(false);
+  React.useEffect(validateValues, [title, description, linkText, content]);
 
   /* ODER:
   function validateValues() {
@@ -90,7 +64,6 @@ function ToggleForm(props) {
   return (
     <Grid container spacing={3} sx={{ my: { xs: 4, md: 4 } }}>
       <form
-        onChange={validateValues}
         onSubmit={handleSubmit}
         className={utilStyles.paddingNormal}
         style={{ width: "100%" }}
