@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
-import UpdateForm from "../../../components/updateForm";
 import ToggleForm from "../../../components/toggleForm";
 
 const theme = createTheme({});
