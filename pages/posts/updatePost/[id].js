@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import ToggleForm from "../../../components/toggleForm";
 
 const theme = createTheme({});
+
 export default function UpdateWrapper({ postData }) {
   return (
     <ThemeProvider theme={theme}>
