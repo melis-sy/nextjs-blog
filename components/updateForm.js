@@ -4,6 +4,7 @@ import utilStyles from "../styles/utils.module.css";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { useRouter } from "next/router";
+import RecreateButton from "./recreateButton";
 
 function UpdateForm(props) {
   const post = props.post;

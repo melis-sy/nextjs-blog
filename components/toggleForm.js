@@ -4,6 +4,7 @@ import utilStyles from "../styles/utils.module.css";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { useRouter } from "next/router";
+import RecreateButton from "./recreateButton";
 
 function ToggleForm({ post }) {
   console.log("Aktuelle Postdaten: ", post);
@@ -13,6 +14,8 @@ function ToggleForm({ post }) {
   console.log("Is Update: ", isUpdate);
 
   //React.useState(post.title || "")
+
+  //const [isDeleted, setDeleted] = React.useState();
   const [title, setTitle] = React.useState(isUpdate ? post.title : "");
 
   const [description, setDescription] = React.useState(

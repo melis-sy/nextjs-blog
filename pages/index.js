@@ -13,11 +13,24 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Sidebar from "../components/Sidebar";
+import RecreateButton from "../components/recreateButton";
 
-const theme = createTheme({ palette: { primary: { main: "#FF4040" } } });
+const theme = createTheme({
+  palette: { primary: { main: "#FF4040" }, secondary: { main: "#FF8888" } },
+});
 
 export async function getStaticProps() {
-  const allPostsData = await getSortedPostsData();
+  const deleted = false;
+  //const allPostsData = await axios.get("/api/read", deleted);
+  const allPostsData = await getSortedPostsData(deleted);
+  if (!allPostsData.length) {
+    return {
+      redirect: {
+        destination: `/posts/createNewPost`,
+      },
+    };
+  }
+
   const postData = await getPostData(allPostsData[0].id);
 
   return {
@@ -60,6 +73,7 @@ export default function Home({ allPostsData, postData }) {
         <Head>
           <title>{siteTitle}</title>
         </Head>
+        <RecreateButton toRecreate={true}></RecreateButton>
         <MainFeaturedPost post={postData} />
         <Grid container spacing={4}>
           {allPostsData.map((post) => (

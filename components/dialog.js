@@ -11,20 +11,11 @@ import { useRouter } from "next/router";
 import { lightBlue } from "@mui/material/colors";
 import axios from "axios";
 
-export default function DeleteDialog({ id }) {
-  const [open, setOpen] = React.useState(false);
+export default function DeleteDialog({ id, open, handleClose }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const router = useRouter();
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   async function deletePost() {
     await axios.delete(`/api/delete/${id}`);
@@ -33,9 +24,6 @@ export default function DeleteDialog({ id }) {
 
   return (
     <div>
-      <Button variant="contained" color="error" onClick={handleClickOpen}>
-        DELETE
-      </Button>
       <Dialog
         fullScreen={fullScreen}
         open={open}

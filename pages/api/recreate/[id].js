@@ -1,11 +1,9 @@
-import { createPost } from "../../../lib/create";
-
-//req.param;
+import { recreatePost } from "../../../lib/recreate";
 
 export default function handler(req, res) {
-  console.log("Req Body", req.body);
+  console.log(req);
   try {
-    createPost(req.body);
+    recreatePost(req.query.id);
     res.status(200).send({});
   } catch (err) {
     res.status(500).send({ error: "failed to fetch data" });

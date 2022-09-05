@@ -14,13 +14,31 @@ function Buttongroup(props) {
     router.push(`/posts/updatePost/${id}`);
   }
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Createbutton></Createbutton>
+
       <Button variant="contained" color="secondary" onClick={bringToUpdate}>
         UPDATE
       </Button>
-      <DeleteDialog id={id}></DeleteDialog>
+      <Button variant="contained" color="error" onClick={handleClickOpen}>
+        DELETE
+      </Button>
+      <DeleteDialog
+        id={id}
+        open={open}
+        handleClose={handleClose}
+      ></DeleteDialog>
     </ButtonGroup>
   );
 }
